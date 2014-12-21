@@ -1,12 +1,14 @@
 ## These two functions allow you to cache a square matrix and its inverse into
 ## a list object, for easy retrieval later.
 
-## makeCacheMatrix() creates a list object that includes a cached square matrix,
-## and an empty cache for its inverse.
-## The function cacheSolve() must be run in order to calculate and cache the
-## inverse of the matrix into the list object.
-## makeCacheMatrix() takes one argument, x, which is used as the data with which
-## to construct a square matrix.
+## makeCacheMatrix() caches a square matrix and creates an empty cache for 
+## storing its inverse. These are stored in a list object.
+## 
+## makeCacheMatrix() takes as its argument the data to populate a square matrix,
+## or, an existing square matrix object.
+## 
+## The function cacheSolve() must be run separately in order to calculate the
+## inverse of the matrix, and store it in the cache.
 
 makeCacheMatrix <- function(x = matrix()) {
         mdim<-sqrt(length(x))
@@ -27,12 +29,17 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## cacheSolve() takes a matrix that has been cached using makeCacheMatrix(),
-## and gives its inverse.
-## The first time cacheSolve() is run on an object made with make CacheMatrix(),
-## it will generate the inverse matrix, and will store it in the cache.
+## cacheSolve() gives the inverse of a matrix that has been cached using
+## makeCacheMatrix().
+## 
+## cacheSolve() takes as its argument a list object containing a chached matrix,
+## created by makeCacheMatrix().
+## 
+## The first time cacheSolve() is run it will generate the inverse of the 
+## cached matrix, and will store it in the inverse matrix cache.
+## 
 ## On subsequent iterations, cacheSolve() will retrieve the inverse matrix
-## from the cache.
+## previously stored in the cache.
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
